@@ -30,7 +30,7 @@ public class Farmer extends Thread {
             try {
                 synchronized (crop) {
                     Vegetable vegetable = new Vegetable(name);
-                    Thread.sleep(vegetable.getCooldown());
+                    Thread.sleep(1000);
                     this.crop.addNewVegetable(vegetable);
                     System.out.println(this.name + " ha plantado el vegetal " + vegetable.getVegetable());
                     crop.notifyAll();
