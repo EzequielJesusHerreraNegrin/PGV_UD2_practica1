@@ -10,6 +10,8 @@ public class App {
         Farmer farmerr = new Farmer("luis", 5, crop);
         Client client = new Client("Pepe", 5, crop);
 
+        farmerr.setPriority(Thread.MAX_PRIORITY);
+        
         farmerr.start();
         client.start();
 
