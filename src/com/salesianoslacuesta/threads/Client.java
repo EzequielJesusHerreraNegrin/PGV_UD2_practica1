@@ -27,7 +27,7 @@ public class Client extends Thread {
                         crop.wait();
                     }
                     Vegetable vegetable = crop.getVegetableSeeded().get(crop.getVegetableSeeded().size() - 1);
-                    Thread.sleep(4000);
+                    Thread.sleep(vegetable.getCooldown());
                     this.crop.dropVegetable(vegetable);
                     System.out.println(this.name + " ya ha consumido el vegetal " + vegetable.getVegetable());
 

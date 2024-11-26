@@ -7,12 +7,12 @@ public class Vegetable {
     private String vegetable = "";
     private final String[] VEGETAGLE_LIST = { "Lettuce", "Cabbage", "Onion", "Spinach", "Potato", "Celery", "Asparagus",
             "Radish", "Broccoli", "Artichoke", "Tomato", "Cucumber", "Eggplant", "Carrot", "Green bean" };
-    private int growCooldown;
+    private int cooldown;
 
     public Vegetable(String farmer) {
         this.farmer = farmer;
         this.vegetable = getRandomVegetable();
-        this.growCooldown = getVegetableCooldown();
+        this.cooldown = getCooldown();
     }
 
     public String getFarmer() {
@@ -31,16 +31,14 @@ public class Vegetable {
         this.vegetable = vegetable;
     }
 
-    public int getGrowCooldown() {
-        return growCooldown;
+
+
+    public void setCooldown(int growCooldown) {
+        this.cooldown = growCooldown;
     }
 
-    public void setGrowCooldown(int growCooldown) {
-        this.growCooldown = growCooldown;
-    }
-
-    private int getVegetableCooldown() {
-        int cooldown = (int) (Math.random() * (3000 - 1000)) * 1000;
+    public int getCooldown() {
+        int cooldown = 1000 + (int) (Math.random() * ((4000 - 1000) + 1));
         return cooldown;
     }
 
@@ -51,8 +49,5 @@ public class Vegetable {
 
     }
 
-    public String toString() {
-        return "Vegetable [ Farmer =" + this.farmer + ", vegetable =" + this.vegetable + "]";
-    }
 
 }
