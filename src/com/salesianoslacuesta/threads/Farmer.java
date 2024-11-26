@@ -42,13 +42,10 @@ public class Farmer extends Thread {
                 Thread.sleep(2000);
                 seed();
                 System.out.println(vegetable);
-
             } catch (InterruptedException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
             }
         }
-        System.out.println( "esta es la lista pero donde esta ezequiel \n" );
-        System.out.println(crop.getVegetableSeeded());
     }
 }
