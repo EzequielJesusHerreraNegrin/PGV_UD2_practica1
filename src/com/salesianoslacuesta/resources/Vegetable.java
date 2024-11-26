@@ -40,7 +40,7 @@ public class Vegetable {
     }
 
     private int getVegetableCooldown() {
-        int cooldown = (int) (Math.random() * (3000 - 1000)) * 1000;
+        int cooldown = 1000 + (int) (Math.random() * ((4000 - 1000) + 1));
         return cooldown;
     }
 
