@@ -13,6 +13,7 @@ public class Vegetable {
         this.farmer = farmer;
         this.vegetable = getRandomVegetable();
         this.cooldown = getCooldown();
+
     }
 
     public String getFarmer() {
