@@ -30,7 +30,8 @@ public class Farmer extends Thread {
             try {
                 synchronized (crop) {
                     Vegetable vegetable = new Vegetable(name);
-                    Thread.sleep(2000);
+                    Thread.sleep(vegetable.getCooldown());
+
                     this.crop.addNewVegetable(vegetable);
                     System.out.println(this.name + " ha plantado el vegetal " + vegetable.getVegetable());
                     crop.notifyAll();
@@ -39,6 +40,7 @@ public class Farmer extends Thread {
                 e.printStackTrace();
             }
         }
-        System.out.println(this.name + "plantÃ³ todos sus vegetales");
+        System.out.println(this.name + "plantó todos sus vegetales");
+
     }
 }
