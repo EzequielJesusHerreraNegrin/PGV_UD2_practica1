@@ -5,26 +5,14 @@ import com.salesianoslacuesta.resources.Vegetable;
 
 public class Farmer extends Thread {
 
-    Crop crop;
-    private Vegetable vegetable = new Vegetable(null);
-    private String name = "";
-    private int vegetableToSeed = 0;
-    private int vegetableCounter;
+    private Crop crop;
+    private String name;
+    private int vegetableToSeed;
 
     public Farmer(String name, int vegetableToSeed, Crop crop) {
         this.name = name;
         this.vegetableToSeed = vegetableToSeed;
-        this.vegetableCounter = 0;
         this.crop = crop;
-
-    }
-
-    public void seed() {
-        if (vegetableCounter <= vegetableToSeed) {
-            vegetable = new Vegetable(name);
-            this.crop.addNewVegetable(vegetable);
-            vegetableCounter++;
-        }
     }
 
     public int getVegetableToSeed() {
@@ -39,13 +27,14 @@ public class Farmer extends Thread {
     public void run() {
         for (int i = 0; i < vegetableToSeed; i++) {
             try {
-                Thread.sleep(2000);
-                seed();
-                System.out.println(vegetable);
+                Vegetable vegetable = new Vegetable(name);
+                Thread.sleep(vegetable.getGrowCooldown());
+                this.crop.addNewVegetable(vegetable);
+                System.out.println(this.name + " ha plantado el vegetal " + vegetable.getVegetable());
             } catch (InterruptedException e) {
-                // TODO Auto-generated catch block
                 e.printStackTrace();
             }
         }
+        System.out.println(this.name + "plantÃ³ todos sus vegetales");
     }
 }
