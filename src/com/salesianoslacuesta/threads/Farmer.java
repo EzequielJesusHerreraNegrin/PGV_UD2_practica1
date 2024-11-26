@@ -13,6 +13,7 @@ public class Farmer extends Thread {
         this.name = name;
         this.vegetableToSeed = vegetableToSeed;
         this.crop = crop;
+
     }
 
     public int getVegetableToSeed() {
@@ -27,10 +28,13 @@ public class Farmer extends Thread {
     public void run() {
         for (int i = 0; i < vegetableToSeed; i++) {
             try {
-                Vegetable vegetable = new Vegetable(name);
-                Thread.sleep(vegetable.getGrowCooldown());
-                this.crop.addNewVegetable(vegetable);
-                System.out.println(this.name + " ha plantado el vegetal " + vegetable.getVegetable());
+                synchronized (crop) {
+                    Vegetable vegetable = new Vegetable(name);
+                    Thread.sleep(2000);
+                    this.crop.addNewVegetable(vegetable);
+                    System.out.println(this.name + " ha plantado el vegetal " + vegetable.getVegetable());
+                    crop.notifyAll();
+                }
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
