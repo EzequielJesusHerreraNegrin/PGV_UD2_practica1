@@ -18,10 +18,9 @@ public class Crop {
         return vegetableSeeded;
     }
 
-    public void addNewVegetable(Vegetable newVegetable) {
-        if (vegetableSeeded.size() <= CAPACITY) {
+    public synchronized void addNewVegetable(Vegetable newVegetable) {
+        if (vegetableSeeded.size() < CAPACITY) {
             vegetableSeeded.add(newVegetable);  
-            System.out.println(this.vegetableSeeded);
         } else {
             System.out.println("la lista está llena");
         }
